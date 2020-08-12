@@ -1,6 +1,6 @@
 package com.profteam;
 
-import com.profteam.app.App;
+import com.profteam.core.App;
 
 import javax.swing.JFrame;
 

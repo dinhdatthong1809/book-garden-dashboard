@@ -1,4 +1,4 @@
-package com.profteam.app;
+package com.profteam.core;
 
 public class Constants {
     

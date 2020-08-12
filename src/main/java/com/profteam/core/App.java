@@ -1,4 +1,4 @@
-package com.profteam.app;
+package com.profteam.core;
 
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.helper.SettingSave;

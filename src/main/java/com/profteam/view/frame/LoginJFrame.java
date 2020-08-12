@@ -1,6 +1,6 @@
 package com.profteam.view.frame;
 
-import com.profteam.app.Constants;
+import com.profteam.core.Constants;
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.AdminDAO;
 import com.profteam.dao.UserDAO;

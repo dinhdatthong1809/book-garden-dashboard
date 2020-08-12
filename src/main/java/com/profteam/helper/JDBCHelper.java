@@ -1,6 +1,6 @@
 package com.profteam.helper;
 
-import com.profteam.app.DBConnection;
+import com.profteam.core.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

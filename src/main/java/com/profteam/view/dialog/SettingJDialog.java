@@ -2,7 +2,7 @@ package com.profteam.view.dialog;
 
 import com.profteam.Main;
 import com.profteam.custom.message.MessageOptionPane;
-import com.profteam.app.DBConnection;
+import com.profteam.core.DBConnection;
 import com.profteam.helper.DataHelper;
 import com.profteam.helper.SettingSave;
 import com.profteam.model.Setting;
