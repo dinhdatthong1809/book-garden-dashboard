@@ -1,76 +1,29 @@
 package com.duan.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-import com.duan.dao.AdminDAO;
-import com.duan.dao.AuthorDAO;
 import com.duan.custom.common.JDateChooserCustom;
 import com.duan.custom.common.JTableBlue;
 import com.duan.custom.message.MessageOptionPane;
-import com.duan.dao.LocationDAO;
+import com.duan.dao.AuthorDAO;
 import com.duan.helper.DataHelper;
-import com.duan.helper.DateHelper;
 import com.duan.helper.SwingHelper;
-import com.duan.model.Admin;
 import com.duan.model.Author;
-import com.duan.model.Location;
-import com.toedter.calendar.JDateChooser;
 
-import net.miginfocom.layout.LC;
-
-import javax.swing.JSeparator;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import java.awt.Font;
-import javax.swing.JTextArea;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.SystemColor;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import javax.swing.border.EtchedBorder;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-import java.awt.GridLayout;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 public class AuthorJDialog extends JDialog {
 

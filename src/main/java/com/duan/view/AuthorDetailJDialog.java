@@ -1,29 +1,18 @@
 package com.duan.view;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.io.File;
-import java.sql.SQLException;
-
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
 import com.duan.dao.AuthorDAO;
-import com.duan.helper.DataHelper;
 import com.duan.helper.DateHelper;
 import com.duan.helper.SettingSave;
 import com.duan.helper.SwingHelper;
 import com.duan.model.Author;
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
+
+import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.io.File;
+import java.sql.SQLException;
 
 public class AuthorDetailJDialog extends JDialog {
 	private JTextField txtFullname;

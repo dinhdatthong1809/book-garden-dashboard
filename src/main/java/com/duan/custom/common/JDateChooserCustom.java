@@ -1,16 +1,12 @@
 package com.duan.custom.common;
 
-import java.awt.Cursor;
-import java.awt.Font;
-import java.util.Locale;
-
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 import com.duan.helper.SettingSave;
 import com.duan.view.UserJFrame;
 import com.toedter.calendar.JDateChooser;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Locale;
 
 public class JDateChooserCustom extends JDateChooser
 {
