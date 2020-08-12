@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.AdminDAO;
@@ -6,6 +6,7 @@ import com.profteam.helper.AccountSave;
 import com.profteam.helper.DataHelper;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Admin;
+import com.profteam.view.frame.MainJFrame;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;

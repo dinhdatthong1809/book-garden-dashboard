@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.custom.common.JTableRed;
 import com.profteam.custom.message.MessageOptionPane;
@@ -11,6 +11,8 @@ import com.profteam.helper.DateHelper;
 import com.profteam.helper.SettingSave;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Order;
+import com.profteam.view.dialog.OrderDetailJDialog;
+import com.profteam.view.dialog.OrderEditorJDialog;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

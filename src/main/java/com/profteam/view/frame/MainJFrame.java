@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.app.Constants;
 import com.profteam.custom.common.JPanelSlider;
@@ -7,6 +7,8 @@ import com.profteam.helper.AccountSave;
 import com.profteam.helper.ComponentResizer;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Admin;
+import com.profteam.view.dialog.ProfileAdminJDialog;
+import com.profteam.view.dialog.SettingJDialog;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

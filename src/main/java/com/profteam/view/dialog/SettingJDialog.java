@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.Main;
 import com.profteam.custom.message.MessageOptionPane;
@@ -6,6 +6,7 @@ import com.profteam.app.DBConnection;
 import com.profteam.helper.DataHelper;
 import com.profteam.helper.SettingSave;
 import com.profteam.model.Setting;
+import com.profteam.view.frame.MainJFrame;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;

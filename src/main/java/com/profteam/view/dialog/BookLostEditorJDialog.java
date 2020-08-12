@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.custom.common.JTableBlue;
 import com.profteam.custom.message.MessageOptionPane;
@@ -16,6 +16,7 @@ import com.profteam.model.BookLost;
 import com.profteam.model.BookProduct;
 import com.profteam.model.RentBook;
 import com.profteam.model.User;
+import com.profteam.view.frame.BookLostJFrame;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;

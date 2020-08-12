@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.controller.ExportExcel;
 import com.profteam.custom.common.JPanelFlat;

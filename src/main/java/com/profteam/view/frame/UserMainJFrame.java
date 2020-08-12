@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.app.Constants;
 import com.profteam.custom.common.JTableRed;
@@ -20,6 +20,10 @@ import com.profteam.model.Book;
 import com.profteam.model.Order;
 import com.profteam.model.RentBook;
 import com.profteam.model.User;
+import com.profteam.view.dialog.BookDetailJDialog;
+import com.profteam.view.dialog.OrderDetailJDialog;
+import com.profteam.view.dialog.ProfileUserJDialog;
+import com.profteam.view.dialog.RentBookDetailJDialog;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

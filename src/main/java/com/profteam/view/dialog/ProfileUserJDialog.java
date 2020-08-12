@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.custom.common.JDateChooserCustom;
 import com.profteam.custom.message.MessageOptionPane;
@@ -6,6 +6,7 @@ import com.profteam.dao.UserDAO;
 import com.profteam.helper.AccountSave;
 import com.profteam.helper.DataHelper;
 import com.profteam.model.User;
+import com.profteam.view.frame.UserMainJFrame;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;

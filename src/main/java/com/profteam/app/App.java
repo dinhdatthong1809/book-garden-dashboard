@@ -3,8 +3,8 @@ package com.profteam.app;
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.helper.SettingSave;
 import com.profteam.model.Setting;
-import com.profteam.view.LoginJFrame;
-import com.profteam.view.SettingJDialog;
+import com.profteam.view.frame.LoginJFrame;
+import com.profteam.view.dialog.SettingJDialog;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.custom.common.JTableBlue;
 import com.profteam.dao.UserDAO;

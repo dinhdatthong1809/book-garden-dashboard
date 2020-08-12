@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.custom.common.JTableBlue;
 import com.profteam.custom.common.JTableRed;
@@ -13,6 +13,7 @@ import com.profteam.helper.SettingSave;
 import com.profteam.model.Admin;
 import com.profteam.model.BookProduct;
 import com.profteam.model.Storage;
+import com.profteam.view.dialog.SelectBookJDialog;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.AuthorDAO;
@@ -15,6 +15,7 @@ import com.profteam.model.Book;
 import com.profteam.model.Category;
 import com.profteam.model.Location;
 import com.profteam.model.Publisher;
+import com.profteam.view.frame.BookJFrame;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;

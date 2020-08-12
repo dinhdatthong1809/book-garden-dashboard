@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.controller.ExportExcel;
 import com.profteam.custom.common.JTableRed;
@@ -13,6 +13,8 @@ import com.profteam.helper.SettingSave;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Admin;
 import com.profteam.model.Book;
+import com.profteam.view.dialog.BookDetailJDialog;
+import com.profteam.view.dialog.BookEditorJDialog;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

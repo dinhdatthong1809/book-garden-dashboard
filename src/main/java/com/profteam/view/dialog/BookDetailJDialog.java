@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.dialog;
 
 import com.profteam.dao.AuthorDAO;
 import com.profteam.dao.BookDAO;

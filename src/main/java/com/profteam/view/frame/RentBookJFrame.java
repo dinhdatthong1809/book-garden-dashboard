@@ -1,4 +1,4 @@
-package com.profteam.view;
+package com.profteam.view.frame;
 
 import com.profteam.controller.SendMail;
 import com.profteam.custom.common.JTableRed;
@@ -14,6 +14,8 @@ import com.profteam.helper.SwingHelper;
 import com.profteam.model.Admin;
 import com.profteam.model.RentBook;
 import com.profteam.model.User;
+import com.profteam.view.dialog.RentBookDetailJDialog;
+import com.profteam.view.dialog.RentBookEditorJDialog;
 
 import javax.mail.MessagingException;
 import javax.swing.ButtonGroup;

@@ -1,7 +1,7 @@
 package com.profteam.custom.common;
 
 import com.profteam.helper.SettingSave;
-import com.profteam.view.UserJFrame;
+import com.profteam.view.frame.UserJFrame;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.ImageIcon;
