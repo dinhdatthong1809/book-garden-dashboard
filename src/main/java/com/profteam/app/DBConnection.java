@@ -1,0 +1,56 @@
+package com.profteam.app;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DBConnection {
+    private static Connection conn = null;
+    
+    private static String url = "jdbc:sqlserver://localhost; DataBaseName=BookStore";
+    private static String user = "book_garden_operator";
+    private static String password = "Bookgarden_001";
+    
+    static {
+        try {
+            setConnection(url, user, password);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * @param url      url cấu hình JDBC
+     * @param user     Username SQL
+     * @param password Password SQL
+     *                 Thực hiện tạo giá trị connection cho biến conn
+     */
+    public static void setConnection(String url, String user, String password) throws SQLException {
+        conn = DriverManager.getConnection(url, user, password);
+    }
+    
+    public static void setConnection(String host, String databaseName, String user, String password) throws SQLException {
+        String url = "jdbc:sqlserver://" + host + "; DataBaseName=" + databaseName;
+        conn = DriverManager.getConnection(url, user, password);
+    }
+    
+    
+    //Kiểm tra kết nối, trả về TRUE nếu kết nối thành công!
+    public static boolean checkConnectionSQL(String host, String databaseName, String user, String password) throws SQLException {
+        String url = "jdbc:sqlserver://" + host + "; DataBaseName=" + databaseName;
+        Connection conn = DriverManager.getConnection(url, user, password);
+        conn.close();
+        return conn != null;
+    }
+    
+    
+    //Trả về giá trị connection của biến conn
+    public static Connection getConnection() {
+        return conn;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(getConnection());
+    }
+}

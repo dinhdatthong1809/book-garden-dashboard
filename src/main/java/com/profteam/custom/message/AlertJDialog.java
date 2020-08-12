@@ -59,7 +59,7 @@ public class AlertJDialog extends CustomJDialog {
 		this();
 		setLocationRelativeTo(component);
 		lblContent.setText(message);
-		lblIcon.setIcon(new ImageIcon(MessageJDialog.class.getResource("/com/profteam/icon/" + iconName)));
+		lblIcon.setIcon(new ImageIcon(MessageJDialog.class.getResource("/icon/" + iconName)));
 	}
 	public AlertJDialog() 
 	{

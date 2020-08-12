@@ -1,7 +1,6 @@
 package com.profteam.app;
 
 import com.profteam.custom.message.MessageOptionPane;
-import com.profteam.dao.DBConnection;
 import com.profteam.helper.SettingSave;
 import com.profteam.model.Setting;
 import com.profteam.view.LoginJFrame;

@@ -24,7 +24,7 @@
             <version>1.4</version>
         </dependency>
 
-        <!-- Firabase -->
+        <!-- Firebase -->
         <dependency>
             <groupId>com.google.firebase</groupId>
             <artifactId>firebase-admin</artifactId>
@@ -52,11 +52,11 @@
             <version>1.4.3</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <!-- MS SQL Server JDBC -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>5.2.8.RELEASE</version>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>8.4.0.jre8</version>
         </dependency>
 
     </dependencies>

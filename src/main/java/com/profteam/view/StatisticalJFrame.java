@@ -474,7 +474,7 @@ public class StatisticalJFrame extends JFrame {
 		pnlSachBan.setLayout(gl_pnlSachBan);
 		
 		JPanel pnlSachThue = new JPanel();
-		tabbedPane.addTab("Sách Thuê", new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_bookmark_32px.png")), pnlSachThue, null);
+		tabbedPane.addTab("Sách Thuê", new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_bookmark_32px.png")), pnlSachThue, null);
 		
 		cboMonthRentbook = new JComboBox();
 		cboMonthRentbook.addActionListener(new ActionListener() {
@@ -524,7 +524,7 @@ public class StatisticalJFrame extends JFrame {
 			}
 		});
 		btnReloadRentbook.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnReloadRentbook.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_synchronize_24px.png")));
+		btnReloadRentbook.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_synchronize_24px.png")));
 		GroupLayout gl_pnlSachThue = new GroupLayout(pnlSachThue);
 		gl_pnlSachThue.setHorizontalGroup(
 			gl_pnlSachThue.createParallelGroup(Alignment.LEADING)
@@ -554,7 +554,7 @@ public class StatisticalJFrame extends JFrame {
 		pnlSachThue.setLayout(gl_pnlSachThue);
 		
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("Sách mất", new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_generic_book_file_type_32px_4.png")), panel, null);
+		tabbedPane.addTab("Sách mất", new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_generic_book_file_type_32px_4.png")), panel, null);
 		
 		cboMonthBookLost = new JComboBox();
 		cboMonthBookLost.addActionListener(new ActionListener() {
@@ -596,7 +596,7 @@ public class StatisticalJFrame extends JFrame {
 				}
 			}
 		});
-		btnReloadBookLost.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_synchronize_24px.png")));
+		btnReloadBookLost.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_synchronize_24px.png")));
 		btnReloadBookLost.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -627,7 +627,7 @@ public class StatisticalJFrame extends JFrame {
 		panel.setLayout(gl_panel);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("Thành viên", new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_user_32px.png")), panel_2, null);
+		tabbedPane.addTab("Thành viên", new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_user_32px.png")), panel_2, null);
 		
 		cboMonthUser = new JComboBox();
 		cboMonthUser.addActionListener(new ActionListener() {
@@ -656,7 +656,7 @@ public class StatisticalJFrame extends JFrame {
 		
 		JButton btnReloadUser = new JButton("");
 		btnReloadUser.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnReloadUser.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_synchronize_24px.png")));
+		btnReloadUser.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_synchronize_24px.png")));
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -686,7 +686,7 @@ public class StatisticalJFrame extends JFrame {
 		panel_2.setLayout(gl_panel_2);
 		
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("Sách Nhập", new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_move_by_trolley_32px.png")), panel_1, null);
+		tabbedPane.addTab("Sách Nhập", new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_move_by_trolley_32px.png")), panel_1, null);
 		
 		cboMonthStorage = new JComboBox();
 		cboMonthStorage.addActionListener(new ActionListener() {
@@ -728,7 +728,7 @@ public class StatisticalJFrame extends JFrame {
 				}
 			}
 		});
-		button.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_synchronize_24px.png")));
+		button.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_synchronize_24px.png")));
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -758,7 +758,7 @@ public class StatisticalJFrame extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 		
 		JPanel pnlDoanhThu = new JPanel();
-		tabbedPane.addTab("Doanh Thu", new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_stack_of_money_32px.png")), pnlDoanhThu, null);
+		tabbedPane.addTab("Doanh Thu", new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_stack_of_money_32px.png")), pnlDoanhThu, null);
 		
 		cboMonthImcome = new JComboBox();
 		cboMonthImcome.addActionListener(new ActionListener() {
@@ -807,7 +807,7 @@ public class StatisticalJFrame extends JFrame {
 			}
 		});
 		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button_1.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/com/profteam/icon/icons8_synchronize_24px.png")));
+		button_1.setIcon(new ImageIcon(StatisticalJFrame.class.getResource("/icon/icons8_synchronize_24px.png")));
 		GroupLayout gl_pnlDoanhThu = new GroupLayout(pnlDoanhThu);
 		gl_pnlDoanhThu.setHorizontalGroup(
 			gl_pnlDoanhThu.createParallelGroup(Alignment.LEADING)

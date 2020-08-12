@@ -75,7 +75,7 @@ public class OrderEditorJDialog extends JDialog {
 	{
 		setModal(true);
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(OrderEditorJDialog.class.getResource("/com/profteam/icon/icons8_buy_for_change_64px_1.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(OrderEditorJDialog.class.getResource("/icon/icons8_buy_for_change_64px_1.png")));
 		setTitle("Bán Sách chi tiết");
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

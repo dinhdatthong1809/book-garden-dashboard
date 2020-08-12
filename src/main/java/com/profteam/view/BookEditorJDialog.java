@@ -121,7 +121,7 @@ public class BookEditorJDialog extends JDialog {
 	{
 		setModal(true);
 		setTitle("Thêm sách");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(BookEditorJDialog.class.getResource("/com/profteam/icon/icons8_edit_property_50px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(BookEditorJDialog.class.getResource("/icon/icons8_edit_property_50px.png")));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -426,7 +426,7 @@ public class BookEditorJDialog extends JDialog {
 			}
 		});
 		btnConfirm.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnConfirm.setIcon(new ImageIcon(BookEditorJDialog.class.getResource("/com/profteam/icon/icons8_checked_50px.png")));
+		btnConfirm.setIcon(new ImageIcon(BookEditorJDialog.class.getResource("/icon/icons8_checked_50px.png")));
 		btnConfirm.setBounds(418, 316, 214, 120);
 		contentPane.add(btnConfirm);
 		

@@ -15,8 +15,8 @@ public class Setting implements Serializable {
     private String hostDB = "localhost";
     private String portDB = "1433";
     private String nameDB = "BookStore";
-    private String usernameDB = "sa";
-    private String passwordDB = "123";
+    private String usernameDB = "book_garden_operator";
+    private String passwordDB = "Bookgarden_001";
     private String moneySymbol = "đ";
     private String dateFormat = "dd-MM-yyyy";
     private String timeFormat = "hh:mm:ss";

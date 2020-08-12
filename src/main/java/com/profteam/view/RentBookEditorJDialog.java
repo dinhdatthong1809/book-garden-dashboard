@@ -99,7 +99,7 @@ public class RentBookEditorJDialog extends JDialog {
 	{
 		setResizable(false);
 		setModal(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(RentBookEditorJDialog.class.getResource("/com/profteam/icon/icons8_edit_property_50px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(RentBookEditorJDialog.class.getResource("/icon/icons8_edit_property_50px.png")));
 		setTitle("Thêm thuê sách");
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

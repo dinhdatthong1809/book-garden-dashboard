@@ -280,7 +280,7 @@ public class AuthorJDialog extends JDialog {
 		btnNew.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/icon/Create.png")));
 		pnlControll.add(btnInsert);
 		btnInsert.setHorizontalAlignment(SwingConstants.LEFT);
-		btnInsert.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/com/profteam/icon/Accept.png")));
+		btnInsert.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/icon/Accept.png")));
 		
 		btnUpdate = new JButton("Cập nhật");
 		btnUpdate.addActionListener(new ActionListener() {
@@ -295,7 +295,7 @@ public class AuthorJDialog extends JDialog {
 			}
 		});
 		pnlControll.add(btnUpdate);
-		btnUpdate.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/com/profteam/icon/Notes.png")));
+		btnUpdate.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/icon/Notes.png")));
 		btnUpdate.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		btnDelete = new JButton("Xóa");
@@ -315,7 +315,7 @@ public class AuthorJDialog extends JDialog {
 			}
 		});
 		pnlControll.add(btnDelete);
-		btnDelete.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/com/profteam/icon/icons8_delete_32px_1.png")));
+		btnDelete.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/icon/icons8_delete_32px_1.png")));
 		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
 		setLocationRelativeTo(getOwner());
 		loadAuthorToList();

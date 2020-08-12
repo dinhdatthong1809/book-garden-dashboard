@@ -73,7 +73,7 @@ public class CategoryJDialog extends JDialog {
 		setModal(true);
 		setResizable(false);
 		setTitle("Quản lý thể loại");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(LocationJDialog.class.getResource("/com/profteam/icon/icons8_medium_priority_50px.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(LocationJDialog.class.getResource("/icon/icons8_medium_priority_50px.png")));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -181,7 +181,7 @@ public class CategoryJDialog extends JDialog {
 			}
 		});
 		btnSave.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSave.setIcon(new ImageIcon(LocationJDialog.class.getResource("/com/profteam/icon/Accept.png")));
+		btnSave.setIcon(new ImageIcon(LocationJDialog.class.getResource("/icon/Accept.png")));
 		btnSave.setBounds(364, 57, 105, 38);
 		contentPane.add(btnSave);
 		
@@ -201,7 +201,7 @@ public class CategoryJDialog extends JDialog {
 			}
 
 		});
-		btnUpdate.setIcon(new ImageIcon(LocationJDialog.class.getResource("/com/profteam/icon/Notes.png")));
+		btnUpdate.setIcon(new ImageIcon(LocationJDialog.class.getResource("/icon/Notes.png")));
 		btnUpdate.setHorizontalAlignment(SwingConstants.LEFT);
 		btnUpdate.setBounds(364, 106, 105, 38);
 		contentPane.add(btnUpdate);
@@ -230,7 +230,7 @@ public class CategoryJDialog extends JDialog {
 				}
 			}
 		});
-		btnDelete.setIcon(new ImageIcon(LocationJDialog.class.getResource("/com/profteam/icon/icons8_delete_32px_1.png")));
+		btnDelete.setIcon(new ImageIcon(LocationJDialog.class.getResource("/icon/icons8_delete_32px_1.png")));
 		btnDelete.setHorizontalAlignment(SwingConstants.LEFT);
 		btnDelete.setBounds(364, 155, 105, 38);
 		contentPane.add(btnDelete);
@@ -249,7 +249,7 @@ public class CategoryJDialog extends JDialog {
 			}
 		});
 		btnNew.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNew.setIcon(new ImageIcon(LocationJDialog.class.getResource("/com/profteam/icon/Create.png")));
+		btnNew.setIcon(new ImageIcon(LocationJDialog.class.getResource("/icon/Create.png")));
 		btnNew.setBounds(364, 8, 105, 38);
 		contentPane.add(btnNew);
 		
@@ -279,7 +279,7 @@ public class CategoryJDialog extends JDialog {
 					}
 			}
 		});
-		btnXutExcel.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/com/profteam/icon/icons8_microsoft_excel_2019_16px.png")));
+		btnXutExcel.setIcon(new ImageIcon(CategoryJDialog.class.getResource("/icon/icons8_microsoft_excel_2019_16px.png")));
 		btnXutExcel.setBounds(364, 356, 105, 23);
 		contentPane.add(btnXutExcel);
 		setLocationRelativeTo(getOwner());

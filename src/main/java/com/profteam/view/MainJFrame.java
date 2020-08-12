@@ -691,7 +691,7 @@ public class MainJFrame extends JFrame {
 		pnlContent.setLayout(cardLayout);
 		
 		lblBackgroundMain = new JLabel("");
-		lblBackgroundMain.setIcon(new ImageIcon(MainJFrame.class.getResource("/image/background-temp.png")));
+		lblBackgroundMain.setIcon(new ImageIcon(MainJFrame.class.getResource("/image/background.png")));
 		lblBackgroundMain.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlContent.add(lblBackgroundMain, "name_99788257003228");
 		setLocationRelativeTo(getOwner());

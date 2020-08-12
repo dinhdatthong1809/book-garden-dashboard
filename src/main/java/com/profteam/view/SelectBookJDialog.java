@@ -62,7 +62,7 @@ public class SelectBookJDialog extends JDialog {
 	public SelectBookJDialog() 
 	{
 		setModal(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SelectBookJDialog.class.getResource("/com/profteam/icon/icons8_book_50px_1.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SelectBookJDialog.class.getResource("/icon/icons8_book_50px_1.png")));
 		setTitle("Chọn sách");
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
