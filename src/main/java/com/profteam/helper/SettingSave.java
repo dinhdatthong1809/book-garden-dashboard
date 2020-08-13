@@ -1,5 +1,6 @@
 package com.profteam.helper;
 
+import com.profteam.core.Constants;
 import com.profteam.model.Setting;
 
 import java.io.File;
@@ -11,7 +12,7 @@ import java.io.ObjectOutputStream;
 
 public class SettingSave 
 {
-	public static final String URL_SAVE_FILE = "C:\\temp\\";
+	public static final String URL_SAVE_FILE = Constants.RELATED_FILE_LOCATION;
 	public static final String FILE_NAME = "SettingBookStore.dat";
 	public static final String PATH_SAVE_FILE = URL_SAVE_FILE + FILE_NAME;
 	

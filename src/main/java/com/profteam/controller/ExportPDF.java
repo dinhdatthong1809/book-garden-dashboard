@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.profteam.core.Constants;
 import com.profteam.dao.AdminDAO;
 import com.profteam.dao.BookLostDetailDAO;
 import com.profteam.dao.OrderDetailDAO;
@@ -37,9 +38,9 @@ import java.util.Date;
 
 public class ExportPDF 
 {
-	public static final String PATH_PDF_ORDER = "C:\\temp\\OrderData.pdf";
-	public static final String PATH_PDF_RENTBOOK = "C:\\temp\\RentBookData.pdf";
-	public static final String PATH_PDF_BOOKLOST = "C:\\temp\\BookLostData.pdf";
+	public static final String PATH_PDF_ORDER = Constants.RELATED_FILE_LOCATION + "OrderData.pdf";
+	public static final String PATH_PDF_RENTBOOK = Constants.RELATED_FILE_LOCATION + "RentBookData.pdf";
+	public static final String PATH_PDF_BOOKLOST = Constants.RELATED_FILE_LOCATION + "BookLostData.pdf";
 	
 	public static boolean writeOrder(Order order)
 	{

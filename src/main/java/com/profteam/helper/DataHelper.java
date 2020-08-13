@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.text.DecimalFormat;
 
-public class DataHelper 
+public class DataHelper
 {
 	public static final String[] EXTENSIONS_FILE_IMAGE = {".JPEG", ".TIFF", ".PNG", ".JPG", ".RAW"};
 	
@@ -29,10 +29,7 @@ public class DataHelper
 //		System.out.println(regex);
 		if (find.length() != 0)
 		{
-			if (data.matches(regex))
-			{
-				return true;
-			}
+			return data.matches(regex);
 		}
 		return false;
 	}
@@ -50,7 +47,7 @@ public class DataHelper
 			{
 				return true;
 			}
-			else 
+			else
 			{
 				return false;
 			}
@@ -131,12 +128,12 @@ public class DataHelper
 	//Kiểm tra chuỗi truyền vào có phải là số nguyên không
 	public static boolean isInteger(String number)
 	{
-		try 
+		try
 		{
 			Integer.parseInt(number);
 			return true;
-		} 
-		catch (NumberFormatException e) 
+		}
+		catch (NumberFormatException e)
 		{
 			return false;
 		}
@@ -145,12 +142,12 @@ public class DataHelper
 	//Kiểm tra chuỗi truyền vào có phải là số thực không
 	public static boolean isDouble(String number)
 	{
-		try 
+		try
 		{
 			Double.parseDouble(number);
 			return true;
-		} 
-		catch (NumberFormatException e) 
+		}
+		catch (NumberFormatException e)
 		{
 			return false;
 		}
@@ -159,12 +156,12 @@ public class DataHelper
 	//Kiểm tra chuỗi truyền vào có phải là số thực kiểu float không
 	public static boolean isFloat(String number)
 	{
-		try 
+		try
 		{
 			Float.parseFloat(number);
 			return true;
-		} 
-		catch (NumberFormatException e) 
+		}
+		catch (NumberFormatException e)
 		{
 			return false;
 		}
@@ -208,7 +205,7 @@ public class DataHelper
 		return hocLuc;
 	}
 	
-	public static void main(String[] args) throws IOException 
+	public static void main(String[] args) throws IOException
 	{
 
 	}
