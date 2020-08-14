@@ -110,13 +110,7 @@ public class BookEditorJDialog extends JDialog {
     
     public BookEditorJDialog(Book book) {
         this();
-        try {
-            setBookEditor(book);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
+        setBookEditor(book);
     }
     
     private void init() {
@@ -496,8 +490,6 @@ public class BookEditorJDialog extends JDialog {
         this.bookEdit.setIntroduce(txtIntroduct.getText());
         
         return this.bookEdit;
-        
-        
     }
     
     //Thực hiện ghi file ảnh vào source
@@ -510,7 +502,7 @@ public class BookEditorJDialog extends JDialog {
     }
     
     //Cập nhật lại book editor thành book, chuyển chế độ editMode = true
-    public void setBookEditor(Book book) throws SQLException {
+    public void setBookEditor(Book book) {
         setTitle("Cập nhật sách");
         isEditMode = true;
         this.bookEdit = book;
