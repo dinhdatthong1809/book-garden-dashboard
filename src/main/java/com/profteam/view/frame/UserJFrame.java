@@ -1,10 +1,12 @@
 package com.profteam.view.frame;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.profteam.custom.common.JDateChooserCustom;
 import com.profteam.custom.common.JTableRed;
 import com.profteam.custom.common.JTextFieldDark;
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.UserDAO;
+import com.profteam.helper.AccountSave;
 import com.profteam.helper.DateHelper;
 import com.profteam.helper.SettingSave;
 import com.profteam.model.User;
@@ -44,6 +46,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -258,7 +261,7 @@ public class UserJFrame extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 			}
 		});
-		tblUser.setModel(new DefaultTableModel(null, new String[] {"MÃ SỐ", "TÀI KHOẢNG", "MẬT KHẨU", "HỌ TÊN", "NGÀY SINH", "EMAIL", "SỐ ĐIỆN THOẠI"}) 
+		tblUser.setModel(new DefaultTableModel(null, new String[] {"MÃ SỐ", "TÀI KHOẢNG", "HỌ TÊN", "NGÀY SINH", "EMAIL", "SỐ ĐIỆN THOẠI"})
 		{
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -442,7 +445,7 @@ public class UserJFrame extends JFrame {
 		for (User user : list) 
 		{
 			String dateOfBirth = DateHelper.dateToString(user.getDateOfBirth(), SettingSave.getSetting().getDateFormat());
-			Object[] rows = new Object[]{user.getId() , user.getUsername() , user.getPassword() , user.getFullname() , dateOfBirth, user.getEmail() , user.getPhoneNumber()};
+			Object[] rows = new Object[]{user.getId(), user.getUsername(),  user.getFullname(), dateOfBirth, user.getEmail(), user.getPhoneNumber()};
 			model.addRow(rows);
 		}
 	}
@@ -456,7 +459,6 @@ public class UserJFrame extends JFrame {
 		}
 		User user = list.get(index);
 		txtUsername.setText(user.getUsername());
-		txtPassword.setText(user.getPassword());
 		txtFullname.setText(user.getFullname());
 		txtBirthDay.setDate(user.getDateOfBirth());
 		txtEmail.setText(user.getEmail());
@@ -554,7 +556,7 @@ public class UserJFrame extends JFrame {
 		{
 			rdoNu.setSelected(true);
 		}
-		user = new User(0,taikhoan, matkhau, hoten,ngaysinh, email, sodt, gioitinh, isActive, new Date());
+		user = new User(0,taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive, new Date());
 		try 
 		{
 			if (dao.insert(user)) 
@@ -601,7 +603,7 @@ public class UserJFrame extends JFrame {
 			gioitinh = false;
 		}
 		
-		user = new User(list.get(index).getId(), taikhoan, matkhau, hoten,ngaysinh, email, sodt, gioitinh, isActive,list.get(index).getCreatedDate() );
+		user = new User(list.get(index).getId(), taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive,list.get(index).getCreatedDate() );
 		try 
 		{
 			if (dao.update(user, list.get(index).getId())) 
@@ -617,7 +619,7 @@ public class UserJFrame extends JFrame {
 				txtPhoneNum.setText("");
 				
 			}
-		} catch (SQLException e) 
+		} catch (SQLException e)
 		{
 			
 			// TODO: handle exception
@@ -654,4 +656,5 @@ public class UserJFrame extends JFrame {
 			}
 		}
 	}
+
 }

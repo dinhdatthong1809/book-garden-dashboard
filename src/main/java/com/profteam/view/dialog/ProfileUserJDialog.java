@@ -193,7 +193,6 @@ public class ProfileUserJDialog extends JDialog {
 		txtEmail.setText(user.getEmail());
 		txtFullname.setText(user.getFullname());
 		txtId.setText(user.getId() + "");
-		txtPassword.setText(user.getPassword());
 		txtPhoneNum.setText(user.getPhoneNumber());
 		txtUsername.setText(user.getUsername());
 		txtDateOfBirth.setDate(user.getDateOfBirth());
@@ -214,7 +213,7 @@ public class ProfileUserJDialog extends JDialog {
 			userTemp.setUsername(user.getUsername());
 			userTemp.setFullname(txtFullname.getText());
 			userTemp.setEmail(txtEmail.getText());
-			userTemp.setPassword(txtPassword.getText());
+			userTemp.setPassword(AccountSave.encryptPassword(txtPassword.getText()));
 			userTemp.setSex(rdoNam.isSelected());
 			userTemp.setPhoneNumber(txtPhoneNum.getText());
 			userTemp.setDateOfBirth(txtDateOfBirth.getDate());

@@ -298,7 +298,7 @@ public class LoginJFrame extends JFrame
 							user = userDao.findByUser(username);
 							if (user != null) 
 							{
-								if (password.equals(user.getPassword())) 
+								if (AccountSave.encryptPassword(password).equals(user.getPassword()))
 								{
 									if (user.isActive())
 									{

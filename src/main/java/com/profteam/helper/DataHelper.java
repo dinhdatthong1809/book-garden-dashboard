@@ -184,31 +184,7 @@ public class DataHelper
 	{
 		return Float.parseFloat(number);
 	}
-	
-	//Hàm trả về học lực dựa vào điểm truyền vào
-	public static String getHocLuc(double diem)
-	{
-		String hocLuc = "";
-		if (diem >= 9)
-			hocLuc = "Xuất Sắc";
-		else if (diem >= 8)
-			hocLuc = "Giỏi";
-		else if (diem >= 6.5)
-			hocLuc = "Khá";
-		else if (diem >= 5)
-			hocLuc = "Trung Bình";
-		else if (diem >= 3)
-			hocLuc = "Yếu";
-		else
-			hocLuc = "Kém";
-		
-		return hocLuc;
-	}
-	
-	public static void main(String[] args) throws IOException
-	{
 
-	}
 	
 	
 }
