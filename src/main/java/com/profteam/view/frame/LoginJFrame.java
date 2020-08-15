@@ -465,7 +465,7 @@ public class LoginJFrame extends JFrame
 						if (value < maxValue)
 						{
 							proLoading.setValue(++value);
-							Thread.sleep(45);
+							Thread.sleep(10);
 						}
 						else
 						{

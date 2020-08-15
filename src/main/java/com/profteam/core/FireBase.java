@@ -2,6 +2,7 @@ package com.profteam.core;
 
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.WriteChannel;
+import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
@@ -55,8 +56,13 @@ public class FireBase {
         }
     }
     
-    public void uploadImg(String folderName, File file) throws IOException {
-        BlobInfo blobInfo = BlobInfo.newBuilder(BlobId.of(bucketName, folderName + "/" + file.getName()))
+    public void uploadImg(String folderName, File file, String newName) throws IOException {
+        BlobId blobId = BlobId.of(bucketName, folderName + "/" + newName);
+        if (storage.get(blobId) != null) {
+            storage.delete(blobId);
+        }
+        
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
                                     .setContentType("image/jpeg")
                                     .build();
         
@@ -75,6 +81,11 @@ public class FireBase {
         BlobId blobId = BlobId.of(bucketName, folderName + "/" + fileName);
         byte[] buffer = storage.readAllBytes(blobId);
         return ImageIO.read(new ByteArrayInputStream(buffer));
+    }
+    
+    public void deteleImg(String folderName, String fileName) {
+        BlobId blobId = BlobId.of(bucketName, folderName + "/" + fileName);
+        storage.delete(blobId);
     }
     
 }

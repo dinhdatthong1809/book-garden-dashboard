@@ -38,7 +38,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -88,6 +87,8 @@ public class BookEditorJDialog extends JDialog {
     private JTextArea txtIntroduct;
     
     private FireBase fireBase = FireBase.getFireBase();
+    
+    private long time;
     
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -355,13 +356,17 @@ public class BookEditorJDialog extends JDialog {
         
         JButton btnConfirm = new JButton("Xác nhận");
         btnConfirm.addActionListener(e -> {
+            time = System.nanoTime();
+            String oldImage = bookEdit.getImage();
+            
             try {
                 if (isEditMode) {
                     if (validateAll() && updateBook()) {
                         //Tiến hành ghi file ảnh vào folder image sau khi insert Book thành công
                         if (fileImage != null) {
                             try {
-                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage);
+                                fireBase.deteleImg(Constants.REMOTE_BOOK_IMG_FOLDER, oldImage);
+                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage, bookEdit.getId() + time);
                             }
                             catch (IOException e1) {
                                 e1.printStackTrace();
@@ -377,7 +382,7 @@ public class BookEditorJDialog extends JDialog {
                         //Tiến hành ghi file ảnh vào folder image sau khi insert Book thành công
                         if (fileImage != null) {
                             try {
-                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage);
+                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage, bookEdit.getId());
                             }
                             catch (IOException e1) {
                                 e1.printStackTrace();
@@ -462,7 +467,6 @@ public class BookEditorJDialog extends JDialog {
         
     }
     
-    
     //Trả về một model Book từ các dữ liệu trên form
     public Book getBookFromForm() {
         String categoryId = listCategory.get(cboTheLoai.getSelectedIndex()).getId();
@@ -471,13 +475,9 @@ public class BookEditorJDialog extends JDialog {
         int authorId = listAuthor.get(cboAuthor.getSelectedIndex()).getId();
         int publisherId = listPublisher.get(cboPublisher.getSelectedIndex()).getId();
         
-        String imageName = null;
         Date createdDate = new Date();
-        
-        if (fileImage != null) {
-            imageName = fileImage.getName();
-        } else if (isEditMode) {
-            imageName = bookEdit.getImage();
+    
+        if (isEditMode) {
             createdDate = bookEdit.getCreatedDate();
         }
         
@@ -492,19 +492,15 @@ public class BookEditorJDialog extends JDialog {
         this.bookEdit.setLocationId(locationId);
         this.bookEdit.setDescription(txtGhiChu.getText());
         this.bookEdit.setCreatedDate(createdDate);
-        this.bookEdit.setImage(imageName);
+        if (fileImage == null) {
+            this.bookEdit.setImage("");
+        }
+        else {
+            this.bookEdit.setImage(txtMaSach.getText() + time);
+        }
         this.bookEdit.setIntroduce(txtIntroduct.getText());
         
         return this.bookEdit;
-    }
-    
-    //Thực hiện ghi file ảnh vào source
-    public void writeImage(File fileImage) throws IOException {
-        //Chuyển file ảnh đang được chọn sang byte array
-        byte[] imageArray = DataHelper.getArrayByteFromFile(fileImage);
-        
-        //sau đó tiến hành ghi byte array này ra file theo dường dẫn tới folder image
-        DataHelper.writeFileToSource(imageArray, "image/" + fileImage.getName());
     }
     
     //Cập nhật lại book editor thành book, chuyển chế độ editMode = true
@@ -616,12 +612,14 @@ public class BookEditorJDialog extends JDialog {
         cboTheLoai.setSelectedItem(categoryTitle);
         cboViTri.setSelectedItem(locationName);
         txtIntroduct.setText(book.getIntroduce());
-        
+    
         //Xử lý ảnh
-        if (book.getImage() != null)
+        if (book.getImage() != null) {
             setImage(book.getImage());
-        else
+        }
+        else {
             removeImage();
+        }
     }
     
     public void chooseImage() {

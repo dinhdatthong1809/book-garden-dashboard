@@ -198,7 +198,6 @@ public class BookJFrame extends JFrame {
         btnEdit.addActionListener(e -> {
             try {
                 if (AccountSave.getAdmin().getRole() == Admin.ROLE_QUANLY || AccountSave.getAdmin().getRole() == Admin.ROLE_GIAMDOC) {
-                    System.out.println(getBookSelected().getImage());
                     showEditorBook(getBookSelected());
                 } else {
                     MessageOptionPane.showAlertDialog(contentPane, "Chức năng này chỉ dành cho chức vụ Quản Lý!", MessageOptionPane.ICON_NAME_BLOCK);
