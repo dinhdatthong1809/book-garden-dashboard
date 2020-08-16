@@ -578,7 +578,12 @@ public class StatisticalJFrame extends JFrame {
 		
 		tblBookLost = new JTableBlue();
 		tblBookLost.setRowHeight(30);
-		tblBookLost.setModel(new DefaultTableModel(null, new Object[] {"MÃ SÁCH", "TÊN SÁCH", "SỐ ĐƠN", "TỔNG SÁCH MẤT", "TỔNG PHẠT"}));
+		tblBookLost.setModel(new DefaultTableModel(null, new Object[] {"MÃ SÁCH", "TÊN SÁCH", "SỐ ĐƠN", "TỔNG SÁCH MẤT", "TỔNG PHẠT"}){
+			public boolean isCellEditable(int row, int column)
+			{
+				return false;
+			}
+		});
 		scrollPane_4.setViewportView(tblBookLost);
 		
 		JButton btnReloadBookLost = new JButton("");
@@ -651,7 +656,12 @@ public class StatisticalJFrame extends JFrame {
 		
 		tblUser = new JTableBlue();
 		tblUser.setRowHeight(30);
-		tblUser.setModel(new DefaultTableModel(null, new Object[] {"USER ID", "TÀI KHOẢN", "HỌ TÊN", "ĐỊA CHỈ EMAIL", "NGÀY SINH", "NGÀY ĐĂNG KÝ"}));
+		tblUser.setModel(new DefaultTableModel(null, new Object[] {"USER ID", "TÀI KHOẢN", "HỌ TÊN", "ĐỊA CHỈ EMAIL", "NGÀY SINH", "NGÀY ĐĂNG KÝ"}){
+			public boolean isCellEditable(int row, int column)
+			{
+				return false;
+			}
+		});
 		scrollPane_5.setViewportView(tblUser);
 		
 		JButton btnReloadUser = new JButton("");
@@ -710,7 +720,12 @@ public class StatisticalJFrame extends JFrame {
 		
 		tblStorage = new JTableBlue();
 		tblStorage.setRowHeight(30);
-		tblStorage.setModel(new DefaultTableModel(null, new Object[] {"MÃ SÁCH", "TÊN SÁCH", "TỔNG SÁCH NHẬP", "CHI PHÍ"}));
+		tblStorage.setModel(new DefaultTableModel(null, new Object[] {"MÃ SÁCH", "TÊN SÁCH", "TỔNG SÁCH NHẬP", "CHI PHÍ"}){
+			public boolean isCellEditable(int row, int column)
+			{
+				return false;
+			}
+		});
 		scrollPane_3.setViewportView(tblStorage);
 		
 		JButton button = new JButton("");

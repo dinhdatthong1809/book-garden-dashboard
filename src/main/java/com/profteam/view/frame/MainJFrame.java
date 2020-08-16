@@ -699,6 +699,7 @@ public class MainJFrame extends JFrame {
 		setLocationRelativeTo(getOwner());
 		
 		showInfoAdmin();
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	
 	

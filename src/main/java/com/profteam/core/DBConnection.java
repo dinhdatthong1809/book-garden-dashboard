@@ -10,16 +10,7 @@ public class DBConnection {
     private static String url = "jdbc:sqlserver://localhost; DataBaseName=BookStore";
     private static String user = "book_garden_operator";
     private static String password = "Bookgarden_001";
-    
-    static {
-        try {
-            setConnection(url, user, password);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
+
     /**
      * @param url      url cấu hình JDBC
      * @param user     Username SQL

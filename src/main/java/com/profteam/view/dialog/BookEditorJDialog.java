@@ -357,15 +357,16 @@ public class BookEditorJDialog extends JDialog {
         JButton btnConfirm = new JButton("Xác nhận");
         btnConfirm.addActionListener(e -> {
             time = System.nanoTime();
-            String oldImage = bookEdit.getImage();
-            
+            String oldImage = bookEdit == null ? null : bookEdit.getImage();
             try {
                 if (isEditMode) {
                     if (validateAll() && updateBook()) {
                         //Tiến hành ghi file ảnh vào folder image sau khi insert Book thành công
                         if (fileImage != null) {
                             try {
-                                fireBase.deteleImg(Constants.REMOTE_BOOK_IMG_FOLDER, oldImage);
+                                if (oldImage != null) {
+                                    fireBase.deteleImg(Constants.REMOTE_BOOK_IMG_FOLDER, oldImage);
+                                }
                                 fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage, bookEdit.getId() + time);
                             }
                             catch (IOException e1) {
@@ -382,7 +383,7 @@ public class BookEditorJDialog extends JDialog {
                         //Tiến hành ghi file ảnh vào folder image sau khi insert Book thành công
                         if (fileImage != null) {
                             try {
-                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage, bookEdit.getId());
+                                fireBase.uploadImg(Constants.REMOTE_BOOK_IMG_FOLDER, fileImage, bookEdit.getId()  + time);
                             }
                             catch (IOException e1) {
                                 e1.printStackTrace();
@@ -479,6 +480,8 @@ public class BookEditorJDialog extends JDialog {
     
         if (isEditMode) {
             createdDate = bookEdit.getCreatedDate();
+        } else {
+            this.bookEdit = new Book();
         }
         
         this.bookEdit.setId(txtMaSach.getText());
@@ -654,7 +657,6 @@ public class BookEditorJDialog extends JDialog {
     //Cập nhật lại icon cho lblImage lấy ảnh từ folder image có nameFile.
     public void setImage(String imageName) {
         if (imageName != null && imageName.length() > 0) {
-            lblImage.setText("");
             ImageIcon icon = null;
             try {
                 icon = new ImageIcon(fireBase.downloadImg(Constants.REMOTE_BOOK_IMG_FOLDER, imageName));
@@ -663,7 +665,9 @@ public class BookEditorJDialog extends JDialog {
                 MessageOptionPane.showMessageDialog(contentPane, "Đã có lỗi sảy ra khi tải hình", MessageOptionPane.ICON_NAME_WARNING);
                 removeImage();
             }
+
             lblImage.setIcon(icon);
+            lblImage.setText("");
             SwingHelper.setAutoResizeIcon(lblImage);
         } else {
             removeImage();

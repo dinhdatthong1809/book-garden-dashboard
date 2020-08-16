@@ -37,6 +37,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -229,6 +230,10 @@ public class BookJFrame extends JFrame {
             }
             catch (HeadlessException | SQLException e1) {
                 e1.printStackTrace();
+
+                if(e1 instanceof SQLException && ((SQLException) e1).getErrorCode() == 547) {
+                    MessageOptionPane.showAlertDialog(contentPane, "Sách này đã từng được thực hiện các thanh toán, không được xóa!", MessageOptionPane.ICON_NAME_BLOCK);
+                }
             }
         });
         btnDelete.setEnabled(false);
@@ -359,6 +364,7 @@ public class BookJFrame extends JFrame {
         });
         tblBook.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         tblBook.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tblBook.getColumnModel().getColumn(1).setCellRenderer(SwingHelper.getRenderLeftColumn());
         scrollPane.setViewportView(tblBook);
         
         btnExportExcel = new JButton("Xuất Excel");

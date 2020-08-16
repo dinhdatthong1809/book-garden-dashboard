@@ -8,10 +8,9 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Image;
+import java.awt.*;
 
 public class SwingHelper 
 {
@@ -65,6 +64,10 @@ public class SwingHelper
 		btn.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btn.setHorizontalTextPosition(SwingConstants.CENTER);
 	}
+
+	public static Dimension getFullSizeScreenDimension() {
+		return Toolkit.getDefaultToolkit().getScreenSize();
+	}
 	
 	public static boolean showConfirm(Component comp, String msg)
 	{
@@ -85,8 +88,18 @@ public class SwingHelper
 		return false;
 	}
 	
-	
-	
+	public static DefaultTableCellRenderer getRenderRightColumn() {
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
+		return rightRenderer;
+	}
+
+	public static DefaultTableCellRenderer getRenderLeftColumn() {
+		DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+		rightRenderer.setHorizontalAlignment(JLabel.LEFT);
+		return rightRenderer;
+	}
+
 	
 	
 	

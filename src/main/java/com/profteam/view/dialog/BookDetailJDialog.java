@@ -1,5 +1,8 @@
 package com.profteam.view.dialog;
 
+import com.profteam.core.Constants;
+import com.profteam.core.FireBase;
+import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.AuthorDAO;
 import com.profteam.dao.BookDAO;
 import com.profteam.dao.CategoryDAO;
@@ -36,6 +39,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class BookDetailJDialog extends JDialog {
@@ -55,8 +59,11 @@ public class BookDetailJDialog extends JDialog {
 	private JLabel lblViTri;
 	private JTextField txtDescription;
 	private JTextArea txtIntroduce;
+	private File fileImage;
 	
 	private Book book;
+	private FireBase fireBase = FireBase.getFireBase();
+
 
 	public static void main(String[] args) 
 	{
@@ -365,19 +372,30 @@ public class BookDetailJDialog extends JDialog {
 	{
 		if (imageName != null && imageName.length() > 0)
 		{
-			File file = new File("image/" + imageName);
-			if (file != null)
-			{
-				ImageIcon icon = new ImageIcon(file.getAbsolutePath());
-				lblImage.setIcon(icon);
-				lblImage.setText("");
-				SwingHelper.setAutoResizeIcon(lblImage);
+			ImageIcon icon = null;
+			try {
+				icon = new ImageIcon(fireBase.downloadImg(Constants.REMOTE_BOOK_IMG_FOLDER, imageName));
 			}
+			catch (IOException e) {
+				MessageOptionPane.showMessageDialog(contentPane, "Đã có lỗi sảy ra khi tải hình", MessageOptionPane.ICON_NAME_WARNING);
+				removeImage();
+			}
+
+			lblImage.setIcon(icon);
+			lblImage.setText("");
+			SwingHelper.setAutoResizeIcon(lblImage);
 		}
 		else
 		{
 			lblImage.setIcon(null);
 			lblImage.setText("Không có ảnh");
 		}
+	}
+
+	//Xóa icon lblImage và set fileImage = null
+	public void removeImage() {
+		lblImage.setText("Chưa có ảnh");
+		lblImage.setIcon(null);
+		this.fileImage = null;
 	}
 }

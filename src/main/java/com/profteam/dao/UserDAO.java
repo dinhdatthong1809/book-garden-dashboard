@@ -43,7 +43,7 @@ public class UserDAO
     
     public static boolean insert(User user ) throws SQLException
     {
-        String sql = "INSERT INTO [USER] Values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO [USER] Values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement pre = JDBCHelper.createPreparedStatement(sql,
 									        		user.getUsername(), 
@@ -54,7 +54,8 @@ public class UserDAO
 									        		user.getPhoneNumber(),
 									        		user.isSex(),
 									        		user.isActive(),
-									        		user.getCreatedDate());
+									        		user.getCreatedDate(),
+                                                    user.getAddress());
         
          int count = pre.executeUpdate();
          
@@ -64,7 +65,7 @@ public class UserDAO
     public static boolean update(User user , int id) throws SQLException
     {
         String sql = "UPDATE [USER] SET username=?, password=?, fullname=?,"
-                + "date_of_birth=?, email=?, phone_number=?, sex=?, isActive=?, created_date = ? Where id=?";
+                + "date_of_birth=?, email=?, phone_number=?, sex=?, isActive=?, created_date = ?, address = ? Where id=?";
 
         PreparedStatement pre = JDBCHelper.createPreparedStatement(sql, 
 								        		user.getUsername(), 
@@ -76,6 +77,7 @@ public class UserDAO
 								        		user.isSex(),
 								        		user.isActive(),
 								        		user.getCreatedDate(),
+								        		user.getAddress(),
 								        		id);
         int count = pre.executeUpdate();
         return count > 0;
@@ -140,7 +142,8 @@ public class UserDAO
     	boolean sex = rs.getBoolean(8);
     	boolean isActive = rs.getBoolean(9);
     	Date createdDate = rs.getDate(10);
+    	String address = rs.getString(11);
     	
-    	return new User(id, use, password, fullname, dateOfBirth, email, phoneNumber, sex, isActive, createdDate);
+    	return new User(id, use, password, fullname, dateOfBirth, email, phoneNumber, sex, isActive, createdDate, address);
     }
 }

@@ -11,8 +11,8 @@ public class AccountSave
 {
 	public static final String SALT_16_BYTES_BYTES = "1234567890123456";
 
-	private static Admin admin = new Admin(105, "haogd", "123", "Lý Tiểu Long", "lytieulong@gmail.com", "01682439314", null, true, 0, true, new Date());
-	private static User user = new User(100, "haond", "123", "Nguyễn Văn Hao", new Date(), "teonv@gmail.com", "0623457413", false, true, new Date());
+	private static Admin admin = new Admin();
+	private static User user = new User();
 	public static void setAdmin(Admin admin) 
 	{
 		AccountSave.admin = admin;

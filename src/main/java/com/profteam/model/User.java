@@ -18,14 +18,13 @@ public class User {
     private boolean sex;
     private boolean isActive;
     private Date createdDate;
+    private String address;
     
     public User() {
     
     }
-    
-    public User(int id, String username, String password, String fullname, Date dateOfBirth, String email,
-                String phoneNumber, boolean sex, boolean isActive, Date createdDate) {
-        super();
+
+    public User(int id, String username, String password, String fullname, Date dateOfBirth, String email, String phoneNumber, boolean sex, boolean isActive, Date createdDate, String address) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -36,8 +35,9 @@ public class User {
         this.sex = sex;
         this.isActive = isActive;
         this.createdDate = createdDate;
+        this.address = address;
     }
-    
+
     public boolean isActive() {
         return isActive;
     }
@@ -117,7 +117,15 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getSearchString() {
         String dateOfBirthStr = "";
         String createdDateSrt = "";
@@ -126,6 +134,6 @@ public class User {
         if (createdDate != null)
             createdDateSrt = DateHelper.dateToString(createdDate, SettingSave.getSetting().getDateFormat());
         
-        return id + " " + username + " " + password + " " + fullname + " " + dateOfBirthStr + " " + email + " " + phoneNumber + " " + createdDateSrt;
+        return id + " " + username + " " + password + " " + fullname + " " + dateOfBirthStr + " " + email + " " + phoneNumber + " " + createdDateSrt + " " + address;
     }
 }

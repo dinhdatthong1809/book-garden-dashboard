@@ -3,30 +3,15 @@ package com.profteam.view.frame;
 import com.profteam.controller.ExportExcel;
 import com.profteam.custom.common.JPanelFlat;
 import com.profteam.custom.common.JTableRed;
-import com.profteam.custom.common.JTextFieldDark;
 import com.profteam.custom.message.MessageOptionPane;
 import com.profteam.dao.AdminDAO;
 import com.profteam.helper.DataHelper;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Admin;
 
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.GroupLayout;
+import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -55,12 +40,12 @@ public class AdminJFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTableRed tblUser;
-	private JTextFieldDark txtSearch;
-	private JTextFieldDark txtUsername;
-	private JTextFieldDark txtPassword;
-	private JTextFieldDark txtFullname;
-	private JTextFieldDark txtEmail;
-	private JTextFieldDark txtPhoneNum;
+	private JTextField txtSearch;
+	private JTextField txtUsername;
+	private JTextField txtPassword;
+	private JTextField txtFullname;
+	private JTextField txtEmail;
+	private JTextField txtPhoneNum;
 	private JLabel lblAnh ;
 	private JComboBox cboChucVu;
 	private final ButtonGroup bgrSex = new ButtonGroup();
@@ -132,7 +117,7 @@ public class AdminJFrame extends JFrame {
 		});
 		lblTmKim.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
-		txtSearch = new JTextFieldDark();
+		txtSearch = new JTextField();
 		txtSearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) 
@@ -145,18 +130,18 @@ public class AdminJFrame extends JFrame {
 		JLabel lblTiKhong = new JLabel("Tài khoản:");
 		lblTiKhong.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		txtUsername = new JTextFieldDark();
+		txtUsername = new JTextField();
 		txtUsername.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtUsername.setColumns(10);
 		
-		txtPassword = new JTextFieldDark();
+		txtPassword = new JTextField();
 		txtPassword.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtPassword.setColumns(10);
 		
 		JLabel lblMtKhu = new JLabel("Mật khẩu:");
 		lblMtKhu.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		txtFullname = new JTextFieldDark();
+		txtFullname = new JTextField();
 		txtFullname.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtFullname.setColumns(10);
 		
@@ -166,11 +151,11 @@ public class AdminJFrame extends JFrame {
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		txtEmail = new JTextFieldDark();
+		txtEmail = new JTextField();
 		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtEmail.setColumns(10);
 		
-		txtPhoneNum = new JTextFieldDark();
+		txtPhoneNum = new JTextField();
 		txtPhoneNum.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtPhoneNum.setColumns(10);
 		

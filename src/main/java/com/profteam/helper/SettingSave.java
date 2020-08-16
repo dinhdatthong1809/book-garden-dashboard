@@ -18,11 +18,11 @@ public class SettingSave
 	
 	public static Setting settingSave = new Setting();
 	
-	static
-	{
-		loadSetting();
-	}
-	
+//	static
+//	{
+//		loadSetting();
+//	}
+
 	public static Setting getSetting()
 	{
 		return settingSave;

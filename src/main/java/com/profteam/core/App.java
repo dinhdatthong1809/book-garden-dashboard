@@ -13,7 +13,9 @@ public class App {
     public static void run() {
         // init fireBase
         FireBase fireBase = FireBase.getFireBase();
-        
+
+        SettingSave.loadSetting();
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }

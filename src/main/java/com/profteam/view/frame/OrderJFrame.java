@@ -394,6 +394,7 @@ public class OrderJFrame extends JFrame {
 	//Sự kiện được gọi khi nhấn nút 'Thêm mới' nó sẽ mở ra một cửa sổ để nhập thông tin order vào
 	private void showInsertOrder()
 	{
+		insertOrderJDialog = new OrderEditorJDialog();
 		insertOrderJDialog.setLocationRelativeTo(this);
 		insertOrderJDialog.setEditMode(false);
 		insertOrderJDialog.setOrderJFrame(this);
@@ -405,6 +406,7 @@ public class OrderJFrame extends JFrame {
 	{
 		try 
 		{
+			insertOrderJDialog = new OrderEditorJDialog();
 			editOrderJDialog.setLocationRelativeTo(this);
 			editOrderJDialog.setEditMode(true);
 			editOrderJDialog.setOrderJFrame(this);

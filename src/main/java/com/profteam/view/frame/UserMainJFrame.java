@@ -456,7 +456,6 @@ public class UserMainJFrame extends JFrame {
 				String [] rows = {b.getId(),b.getTitle(),nameAuthor,namePublisher,format.format(b.getPublicationYear()),b.getPageNum()+"",price};
 				model.addRow(rows);
 			}
-			
 		}
 	}
 	

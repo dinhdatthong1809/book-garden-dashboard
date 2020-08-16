@@ -211,8 +211,7 @@ public class UserJFrame extends JFrame {
 		btnCpNht.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
-				if (checkForm()) 
+				if (checkForm())
 				{
 					if (index < 0) 
 					{
@@ -223,7 +222,6 @@ public class UserJFrame extends JFrame {
 					btnCpNht.setEnabled(false);
 					btnXa.setEnabled(false);
 					btnThem.setEnabled(false);
-					
 				}
 			}
 		});
@@ -273,9 +271,10 @@ public class UserJFrame extends JFrame {
 			public void valueChanged(ListSelectionEvent arg0) 
 			{
 				showdetail();
+				unLockForm();
 				btnTaoMoi.setEnabled(true);
 				btnCpNht.setEnabled(true);
-				btnThem.setEnabled(true);
+				btnThem.setEnabled(false);
 				btnXa.setEnabled(true);
 			}
 		});
@@ -404,6 +403,7 @@ public class UserJFrame extends JFrame {
 		btnTaoMoi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				unLockForm();
 				//goi ham can xy ly
 				txtUsername.setText("");
 				txtPassword.setText("");
@@ -418,7 +418,8 @@ public class UserJFrame extends JFrame {
 				btnXa.setEnabled(false);
 			}
 		});
-		
+
+		lockForm();
 	}
 	
 	public void loadListToUser()
@@ -473,7 +474,7 @@ public class UserJFrame extends JFrame {
 		}
 		
 		cboActive.setSelectedIndex((user.isActive()) ? 0 : 1);
-		
+		unLockForm();
 	}
 
 	
@@ -556,7 +557,7 @@ public class UserJFrame extends JFrame {
 		{
 			rdoNu.setSelected(true);
 		}
-		user = new User(0,taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive, new Date());
+		user = new User(0,taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive, new Date(), null);
 		try 
 		{
 			if (dao.insert(user)) 
@@ -573,7 +574,32 @@ public class UserJFrame extends JFrame {
 				MessageOptionPane.showMessageDialog(this, "ID này đã tồn tại!\n" + " Bạn cần Nhấn 'THÊM MỚI' để thêm USER mới", MessageOptionPane.ICON_NAME_WARNING);
 			}
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	}
+
+	public void lockForm() {
+		txtEmail.setEnabled(false);
+		txtFullname.setEnabled(false);
+		txtPassword.setEnabled(false);
+		txtPhoneNum.setEnabled(false);
+		txtUsername.setEnabled(false);
+		txtBirthDay.setEnabled(false);
+		cboActive.setEnabled(false);
+		rdoNam.setEnabled(false);
+		rdoNu.setEnabled(false);
+	}
+
+	public void unLockForm() {
+		txtEmail.setEnabled(true);
+		txtFullname.setEnabled(true);
+		txtPassword.setEnabled(true);
+		txtPhoneNum.setEnabled(true);
+		txtUsername.setEnabled(true);
+		txtBirthDay.setEnabled(true);
+		cboActive.setEnabled(true);
+		rdoNam.setEnabled(true);
+		rdoNu.setEnabled(true);
 	}
 	
 	public void update()
@@ -603,7 +629,7 @@ public class UserJFrame extends JFrame {
 			gioitinh = false;
 		}
 		
-		user = new User(list.get(index).getId(), taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive,list.get(index).getCreatedDate() );
+		user = new User(list.get(index).getId(), taikhoan, AccountSave.encryptPassword(matkhau), hoten,ngaysinh, email, sodt, gioitinh, isActive,list.get(index).getCreatedDate(), null);
 		try 
 		{
 			if (dao.update(user, list.get(index).getId())) 

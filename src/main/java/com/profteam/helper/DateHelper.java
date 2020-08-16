@@ -14,10 +14,13 @@ public class DateHelper
 	//Chuyển từ Date sang String					//dd-MM-yyy
 	public static String dateToString(Date date, String format)
 	{
-		
-		SimpleDateFormat formater = new SimpleDateFormat(format);
-		String stringDate = formater.format(date);
-		return stringDate;
+		if (date != null) {
+			SimpleDateFormat formater = new SimpleDateFormat(format);
+			String stringDate = formater.format(date);
+			return stringDate;
+		} else {
+			return "không rõ";
+		}
 	}
 	
 	//chuyển từ String sang Date
