@@ -13,34 +13,18 @@ import com.profteam.helper.SettingSave;
 import com.profteam.helper.SwingHelper;
 import com.profteam.model.Book;
 
-import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.swing.GroupLayout.Alignment;
 
 public class BookDetailJDialog extends JDialog {
 
@@ -97,24 +81,20 @@ public class BookDetailJDialog extends JDialog {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 669, 601);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		lblImage = new JLabel("Không có ảnh");
+		lblImage.setSize(new Dimension(278, 365));
 		lblImage.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImage.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		lblImage.setBounds(10, 11, 278, 365);
-		contentPane.add(lblImage);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(new LineBorder(new Color(64, 64, 64), 2, true), "Th\u00F4ng tin v\u1EC1 s\u00E1ch", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_3.setBounds(298, 11, 355, 365);
-		contentPane.add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel item0 = new JPanel();
@@ -296,8 +276,6 @@ public class BookDetailJDialog extends JDialog {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new TitledBorder(new LineBorder(new Color(64, 64, 64), 2, true), "Gi\u1EDBi thi\u1EC7u", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		scrollPane.setBounds(10, 384, 643, 149);
-		contentPane.add(scrollPane);
 		
 		txtIntroduce = new JTextArea();
 		txtIntroduce.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -312,16 +290,45 @@ public class BookDetailJDialog extends JDialog {
 		lblGhiCh.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGhiCh.setForeground(Color.DARK_GRAY);
 		lblGhiCh.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblGhiCh.setBounds(10, 544, 56, 17);
-		contentPane.add(lblGhiCh);
 		
 		txtDescription = new JTextField();
 		txtDescription.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtDescription.setBorder(null);
 		txtDescription.setEditable(false);
-		txtDescription.setBounds(76, 544, 577, 17);
-		contentPane.add(txtDescription);
 		txtDescription.setColumns(10);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(scrollPane)
+							.addGap(10))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblImage, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblGhiCh)
+							.addGap(10)
+							.addComponent(txtDescription, GroupLayout.PREFERRED_SIZE, 577, GroupLayout.PREFERRED_SIZE))))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblImage, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblGhiCh)
+						.addComponent(txtDescription, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 	
 	public void setDetail(Book book) throws SQLException
@@ -375,15 +382,14 @@ public class BookDetailJDialog extends JDialog {
 			ImageIcon icon = null;
 			try {
 				icon = new ImageIcon(fireBase.downloadImg(Constants.REMOTE_BOOK_IMG_FOLDER, imageName));
+				lblImage.setIcon(icon);
+				lblImage.setText("");
+				SwingHelper.setAutoResizeIcon(lblImage, Image.SCALE_DEFAULT);
 			}
 			catch (IOException e) {
 				MessageOptionPane.showMessageDialog(contentPane, "Đã có lỗi sảy ra khi tải hình", MessageOptionPane.ICON_NAME_WARNING);
 				removeImage();
 			}
-
-			lblImage.setIcon(icon);
-			lblImage.setText("");
-			SwingHelper.setAutoResizeIcon(lblImage);
 		}
 		else
 		{

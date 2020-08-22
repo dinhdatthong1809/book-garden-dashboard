@@ -1,5 +1,6 @@
 package com.profteam.core;
 
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.auth.oauth2.ServiceAccountCredentials;
 import com.google.cloud.WriteChannel;
 import com.google.cloud.storage.Blob;
@@ -79,6 +80,9 @@ public class FireBase {
     
     public BufferedImage downloadImg(String folderName, String fileName) throws IOException {
         BlobId blobId = BlobId.of(bucketName, folderName + "/" + fileName);
+        if (storage.get(blobId) == null) {
+            throw new IOException("Can't find image with blobId: " + blobId);
+        }
         byte[] buffer = storage.readAllBytes(blobId);
         return ImageIO.read(new ByteArrayInputStream(buffer));
     }

@@ -1,5 +1,6 @@
 package com.profteam.view.dialog;
 
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.profteam.core.Constants;
 import com.profteam.core.FireBase;
 import com.profteam.custom.message.MessageOptionPane;
@@ -475,7 +476,8 @@ public class BookEditorJDialog extends JDialog {
         int publicationYear = DataHelper.getInt(cboNamXuatBan.getItemAt(cboNamXuatBan.getSelectedIndex()).toString());
         int authorId = listAuthor.get(cboAuthor.getSelectedIndex()).getId();
         int publisherId = listPublisher.get(cboPublisher.getSelectedIndex()).getId();
-        
+
+        String oldImageName = bookEdit.getImage();
         Date createdDate = new Date();
     
         if (isEditMode) {
@@ -495,12 +497,16 @@ public class BookEditorJDialog extends JDialog {
         this.bookEdit.setLocationId(locationId);
         this.bookEdit.setDescription(txtGhiChu.getText());
         this.bookEdit.setCreatedDate(createdDate);
-        if (fileImage == null) {
+
+        if (!isEditMode && fileImage == null) {
             this.bookEdit.setImage("");
         }
-        else {
+        else if (isEditMode && fileImage == null) {
+            this.bookEdit.setImage(oldImageName);
+        } else {
             this.bookEdit.setImage(txtMaSach.getText() + time);
         }
+
         this.bookEdit.setIntroduce(txtIntroduct.getText());
         
         return this.bookEdit;
@@ -513,15 +519,6 @@ public class BookEditorJDialog extends JDialog {
         this.bookEdit = book;
         
         txtMaSach.setEnabled(false);
-        
-        if (book.getImage() != null) {
-            try {
-                setImage(book.getImage());
-            }
-            catch (NullPointerException e) {
-                removeImage();
-            }
-        }
     }
     
     //Kiểm tra bắt lỗi dữ liệu trên form, trả về TRUE nếu hợp lệ
@@ -660,15 +657,14 @@ public class BookEditorJDialog extends JDialog {
             ImageIcon icon = null;
             try {
                 icon = new ImageIcon(fireBase.downloadImg(Constants.REMOTE_BOOK_IMG_FOLDER, imageName));
+                lblImage.setIcon(icon);
+                lblImage.setText("");
+                SwingHelper.setAutoResizeIcon(lblImage);
             }
             catch (IOException e) {
                 MessageOptionPane.showMessageDialog(contentPane, "Đã có lỗi sảy ra khi tải hình", MessageOptionPane.ICON_NAME_WARNING);
                 removeImage();
             }
-
-            lblImage.setIcon(icon);
-            lblImage.setText("");
-            SwingHelper.setAutoResizeIcon(lblImage);
         } else {
             removeImage();
         }
