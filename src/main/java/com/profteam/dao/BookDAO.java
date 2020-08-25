@@ -4,11 +4,13 @@ package com.profteam.dao;
 import com.profteam.helper.JDBCHelper;
 import com.profteam.model.Book;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 public class BookDAO 
@@ -176,9 +178,25 @@ public class BookDAO
         
         return new Book(id, title, categoryId, pageNum, authorId, amount, publisherId, publicationYear, money, image, locationId, description, introcuce, createdDate);
     }
-    
+
+    public static List<Book> search(String txtSearch) throws SQLException {
+        List<Book> list = new ArrayList<>();
+        ResultSet rs = JDBCHelper.executeQuery("SELECT * FROM BOOK Where id LIKE ? OR title LIKE ?",
+                                                "%" + txtSearch + "%",
+                                                "%" + txtSearch + "%");
+
+        while (rs.next())
+        {
+            Book e = readFromResultSet(rs);
+            list.add(e);
+        }
+        return list;
+    }
+
     public static void main(String[] args) throws SQLException 
     {
     	System.out.println(BookDAO.findByID("JH42").getImage());
     }
+
+
 }

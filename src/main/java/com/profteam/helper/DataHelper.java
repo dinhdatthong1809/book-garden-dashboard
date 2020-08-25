@@ -168,9 +168,12 @@ public class DataHelper
 	}
 	
 	//Trả về kiểu số nguyên từ chuỗi number truyền vào
-	public static int getInt(String number)
+	public static Integer getInt(String number)
 	{
-		return Integer.parseInt(number);
+		if (isInteger(number)) {
+			return Integer.parseInt(number);
+		}
+		return null;
 	}
 	
 	//Trả về kiểu double từ chuỗi truyền vào

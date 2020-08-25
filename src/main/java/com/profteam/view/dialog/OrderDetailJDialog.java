@@ -50,6 +50,8 @@ public class OrderDetailJDialog extends JDialog {
 	private Order order;
 	private JLabel lblTngCng;
 	private JLabel lblTotalPrice;
+	private JLabel lblTrngThi;
+	private JLabel lblStatus;
 
 	public static void main(String[] args) 
 	{
@@ -71,6 +73,7 @@ public class OrderDetailJDialog extends JDialog {
 		this();
 		setLocationRelativeTo(comp);
 	}
+	
 	public OrderDetailJDialog() 
 	{
 		setModal(true);
@@ -83,9 +86,9 @@ public class OrderDetailJDialog extends JDialog {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 542, 354);
+		setBounds(100, 100, 542, 407);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,7 +131,7 @@ public class OrderDetailJDialog extends JDialog {
 		contentPane.add(lblUser);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 107, 516, 174);
+		scrollPane.setBounds(10, 139, 516, 196);
 		contentPane.add(scrollPane);
 		
 		tblOrderDetail = new JTableBlue();
@@ -163,14 +166,26 @@ public class OrderDetailJDialog extends JDialog {
 		lblTngCng = new JLabel("Tổng cộng:");
 		lblTngCng.setForeground(Color.DARK_GRAY);
 		lblTngCng.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTngCng.setBounds(10, 292, 69, 21);
+		lblTngCng.setBounds(10, 346, 69, 21);
 		contentPane.add(lblTngCng);
 		
 		lblTotalPrice = new JLabel("350000đ");
 		lblTotalPrice.setForeground(Color.RED);
 		lblTotalPrice.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblTotalPrice.setBounds(89, 292, 169, 21);
+		lblTotalPrice.setBounds(89, 346, 169, 21);
 		contentPane.add(lblTotalPrice);
+		
+		lblTrngThi = new JLabel("Trạng thái:");
+		lblTrngThi.setForeground(Color.DARK_GRAY);
+		lblTrngThi.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblTrngThi.setBounds(10, 107, 69, 21);
+		contentPane.add(lblTrngThi);
+		
+		lblStatus = new JLabel("Đã hủy");
+		lblStatus.setForeground(Color.RED);
+		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblStatus.setBounds(125, 107, 169, 21);
+		contentPane.add(lblStatus);
 	}
 	
 	public void setDetailModel(int order_id)
@@ -225,6 +240,7 @@ public class OrderDetailJDialog extends JDialog {
 			lblCreatedDate.setText(createdDate);
 			lblAdmin.setText(admin.getFullname() + " (" + admin.getUsername() + ")");
 			lblTotalPrice.setText(totalPrice);
+			lblStatus.setText(SwingHelper.getTitleStatusOrder(SwingHelper.getStatusOrderFromNameStatus(order.getStatus())));
 		} 
 		catch (SQLException e) 
 		{

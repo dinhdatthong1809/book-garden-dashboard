@@ -1,6 +1,7 @@
 package com.profteam.dao;
 
 import com.profteam.helper.JDBCHelper;
+import com.profteam.helper.SwingHelper;
 import com.profteam.model.BookProduct;
 import com.profteam.model.Order;
 import com.profteam.model.OrderDetail;
@@ -43,12 +44,13 @@ public class OrderDAO
     
     public static boolean insert(Order order) throws SQLException
     {
-        String sql = "INSERT INTO [ORDER] Values(?, ?, ?)";
+        String sql = "INSERT INTO [ORDER] Values(?, ?, ?, ?)";
         
         PreparedStatement pre = JDBCHelper.createPreparedStatement(sql,
         										order.getUserId(), 
         										order.getAdminId(), 
-        										order.getDateCreated());
+        										order.getDateCreated(),
+                                                order.getStatus());
         int count = pre.executeUpdate();
         
         return count > 0;
@@ -56,7 +58,7 @@ public class OrderDAO
     
     public static boolean insert(Order order, List<BookProduct> products) throws SQLException
     {
-        String sql = "INSERT INTO [ORDER] Values(?, ?, ?)";
+        String sql = "INSERT INTO [ORDER] Values(?, ?, ?, ?)";
         Integer user_id = order.getUserId();
         if (user_id == 0)
         	user_id = null;
@@ -64,7 +66,8 @@ public class OrderDAO
         PreparedStatement pre = JDBCHelper.createPreparedStatement(sql,
         										user_id, 
         										order.getAdminId(), 
-        										order.getDateCreated());
+        										order.getDateCreated(),
+                                                order.getStatus());
         int count = pre.executeUpdate();
         ResultSet rs = pre.getGeneratedKeys();
         if (rs.next())
@@ -84,7 +87,8 @@ public class OrderDAO
     {
         String sql = "UPDATE [ORDER] SET user_id = ?, "
         							+ "admin_id = ?, "
-        							+ "date_created = ? "
+        							+ "date_created = ?, "
+                                    + "status = ? "
         							+ "WHERE id = ?";
         Integer user_id = order.getUserId();
         if (user_id == 0)
@@ -94,6 +98,7 @@ public class OrderDAO
         											user_id,
         											order.getAdminId(),
         											order.getDateCreated(),
+        											order.getStatus(),
         											id);
         int count = pre.executeUpdate();
         return count > 0;
@@ -138,15 +143,32 @@ public class OrderDAO
         
         return null;
     }
-    
+
+    public static ArrayList<Order> searchByIdAndStatus(Integer id, SwingHelper.StatusOrder status) throws SQLException
+    {
+        ArrayList<Order> list = new ArrayList<>();
+        ResultSet rs = JDBCHelper.executeQuery("SELECT * FROM [ORDER] Where id LIKE ? AND status LIKE ?",
+                "%" + (id == null ? "" : id) + "%",
+                "%" + (status == null ? "" : SwingHelper.getNameStatusFromStatusOrder(status)) + "%");
+
+        while(rs.next())
+        {
+            Order order = readFromResultSet(rs);
+            list.add(order);
+        }
+        return list;
+
+    }
+
     public static Order readFromResultSet(ResultSet rs) throws SQLException
     {
     	int id = rs.getInt(1);
         int userId = rs.getInt(2);
         int adminId = rs.getInt(3);
         Date dateCreated = rs.getDate(4);
-        
-        return new Order(id, userId, adminId, dateCreated);
+        String status = rs.getString(5);
+
+        return new Order(id, userId, adminId, dateCreated, status);
     }
 
 }

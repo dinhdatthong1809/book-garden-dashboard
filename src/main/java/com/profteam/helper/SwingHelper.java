@@ -11,6 +11,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.Arrays;
 
 public class SwingHelper 
 {
@@ -101,7 +102,107 @@ public class SwingHelper
 	}
 
 	
-	
-	
+	public static enum StatusOrder {
+		OPEN(0),
+		IN_PROGRESS(1),
+		IN_SHIPPING(2),
+		DONE(3),
+		REJECT(-1);
+
+		private int numberCode;
+
+		StatusOrder(int numberCode) {
+			this.numberCode	= numberCode;
+		}
+
+		public int getNumberCode() {
+			return numberCode;
+		}
+
+		@Override
+		public String toString() {
+			return getTitleStatusOrder(this);
+		}
+	}
+
+
+	public static String getTitleStatusOrder(StatusOrder statusOrder) {
+		switch (statusOrder) {
+			case REJECT:
+				return "Đã hủy";
+			case IN_PROGRESS:
+				return "Đang xử lý";
+			case OPEN:
+				return "Mới";
+			case IN_SHIPPING:
+				return "Đang giao";
+			case DONE:
+				return "Đã xong";
+		}
+
+		return "";
+	}
+
+	public static StatusOrder getStatusOrderFromNameStatus(String nameStatus) {
+		switch (nameStatus) {
+			case "REJECT":
+				return StatusOrder.REJECT;
+			case "IN PROGRESS":
+				return StatusOrder.IN_PROGRESS;
+			case "OPEN":
+				return StatusOrder.OPEN;
+			case "IN SHIPPING":
+				return StatusOrder.IN_SHIPPING;
+			case "DONE":
+				return StatusOrder.DONE;
+		}
+		return null;
+	}
+
+	public static String getNameStatusFromStatusOrder(StatusOrder statusOrder) {
+		if (statusOrder != null ) {
+			switch (statusOrder) {
+				case REJECT:
+					return "REJECT";
+				case IN_PROGRESS:
+					return "IN PROGRESS";
+				case OPEN:
+					return "OPEN";
+				case IN_SHIPPING:
+					return "IN SHIPPING";
+				case DONE:
+					return "DONE";
+				default:
+					return null;
+			}
+		}
+
+		return null;
+	}
+
+	public static StatusOrder getStatusOrderFromTitle(String title) {
+		switch (title) {
+			case "Đã hủy":
+				return StatusOrder.REJECT;
+			case "Đang xử lý":
+				return StatusOrder.IN_PROGRESS;
+			case "Mới":
+				return StatusOrder.OPEN;
+			case "Đang giao":
+				return StatusOrder.IN_SHIPPING;
+			case "Đã xong":
+				return StatusOrder.DONE;
+		}
+		return null;
+	}
+
+	public static StatusOrder getStatusOrderFromCode(int code) {
+		return Arrays.stream(StatusOrder.values())
+				.filter(statusOrder -> statusOrder.getNumberCode() == code)
+				.findFirst()
+				.orElse(null);
+	}
+
+
 	
 }

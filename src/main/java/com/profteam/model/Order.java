@@ -14,18 +14,20 @@ public class Order {
     private int userId;
     private int adminId;
     private Date dateCreated;
+    private String status;
     
     public Order() {
     
     }
-    
-    public Order(int id, int userId, int adminId, Date dateCreated) {
+
+    public Order(int id, int userId, int adminId, Date dateCreated, String status) {
         this.id = id;
         this.userId = userId;
         this.adminId = adminId;
         this.dateCreated = dateCreated;
+        this.status = status;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -57,7 +59,15 @@ public class Order {
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
-    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getSearchString() {
         String usernameUser = "";
         String usernameAdmin = "";

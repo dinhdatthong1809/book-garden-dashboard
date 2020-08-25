@@ -14,17 +14,9 @@ import com.profteam.model.Order;
 import com.profteam.view.dialog.OrderDetailJDialog;
 import com.profteam.view.dialog.OrderEditorJDialog;
 
-import javax.swing.GroupLayout;
+import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -55,13 +47,16 @@ public class OrderJFrame extends JFrame {
 	private JButton btnAdd;
 	private JButton btnEdit;
 	private JButton btnDelete;
-	
+	private JComboBox cbxStatus;
+
 	private OrderEditorJDialog insertOrderJDialog = new OrderEditorJDialog();
 	private OrderEditorJDialog editOrderJDialog = new OrderEditorJDialog();
 	private OrderDetailJDialog orderDetailJDialog = new OrderDetailJDialog();
 	
 	private List<Order> listOrder;
 	private int indexSelected = -1;
+	private JTextField txtSearch;
+	private JButton btnSearch;
 	
 
 	public static void main(String[] args) {
@@ -190,7 +185,7 @@ public class OrderJFrame extends JFrame {
 			}
 		});
 		tblOrder.setRowHeight(35);
-		tblOrder.setModel(new DefaultTableModel(null, new String[] {"MÃ ĐƠN", "TÀI KHOẢNG", "NHÂN VIÊN", "SỐ LƯỢNG", "TỔNG TIỀN", "NGÀY BÁN"}) 
+		tblOrder.setModel(new DefaultTableModel(null, new String[] {"MÃ ĐƠN", "TÀI KHOẢNG", "NHÂN VIÊN", "SỐ LƯỢNG", "TỔNG TIỀN", "NGÀY BÁN", "TRẠNG THÁI"})
 		{
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -283,18 +278,46 @@ public class OrderJFrame extends JFrame {
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
+		cbxStatus = new JComboBox();
+		cbxStatus.setModel(new DefaultComboBoxModel(new String[] {"Tất cả", "Đã hủy", "Đang xử lý", "Mới", "Đang giao", "Đã xong"}));
+//		cbxStatus.setModel(new DefaultComboBoxModel(SwingHelper.StatusOrder.values()));
+
+		JLabel lblTrangThai = new JLabel("Trạng thái:");
+		
+		txtSearch = new JTextField();
+		txtSearch.setColumns(10);
+		
+		btnSearch = new JButton("Tìm kiếm");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				onSearch();
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(5)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
-						.addComponent(pnlController, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblTrangThai)
+									.addGap(10)
+									.addComponent(cbxStatus, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 153, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnSearch))
+								.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE))
+							.addGap(10)
+							.addComponent(pnlController, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+							.addGap(10)
+							.addComponent(label, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))
 					.addGap(5))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -302,20 +325,45 @@ public class OrderJFrame extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(6)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(pnlController, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
-						.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
-					.addContainerGap())
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(6)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(4)
+									.addComponent(lblTrangThai))
+								.addComponent(cbxStatus, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnSearch)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(1)
+									.addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
+						.addComponent(pnlController, GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+					.addGap(11))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
 		getDataTolist();
 		fillToTable();
 	}
-	
+
+	private void onSearch() {
+		String searchValue = txtSearch.getText();
+		try
+		{
+			listOrder = OrderDAO.searchByIdAndStatus(DataHelper.getInt(searchValue), SwingHelper.getStatusOrderFromTitle(cbxStatus.getSelectedItem().toString()));
+			fillToTable();
+		}
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	public void getDataTolist()
 	{
 		try 
@@ -345,8 +393,9 @@ public class OrderJFrame extends JFrame {
 				String createdDate = DateHelper.dateToString(order.getDateCreated(), SettingSave.getSetting().getDateFormat());
 				String totalPrice = DataHelper.getFormatForMoney(OrderDetailDAO.getTotalPrice(order.getId())) + SettingSave.getSetting().getMoneySymbol();
 				String totalAmount = OrderDetailDAO.getTotalAmountBook(order.getId()) + " quyển";
+				String status = SwingHelper.getTitleStatusOrder(SwingHelper.getStatusOrderFromNameStatus(order.getStatus()));
 				
-				Object[] rowData = {order.getId(), user, admin, totalAmount, totalPrice, createdDate};
+				Object[] rowData = {order.getId(), user, admin, totalAmount, totalPrice, createdDate, status};
 				model.addRow(rowData);
 			}
 			

@@ -303,16 +303,14 @@ public class BookDetailJDialog extends JDialog {
 					.addGap(5)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(scrollPane)
-							.addGap(10))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblImage, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
 							.addComponent(panel_3, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblGhiCh)
 							.addGap(10)
-							.addComponent(txtDescription, GroupLayout.PREFERRED_SIZE, 577, GroupLayout.PREFERRED_SIZE))))
+							.addComponent(txtDescription, GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

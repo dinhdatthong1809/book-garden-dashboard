@@ -59,6 +59,13 @@
             <version>1.4.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+
+
         <!-- MS SQL Server JDBC -->
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>

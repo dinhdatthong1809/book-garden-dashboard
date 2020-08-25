@@ -9,6 +9,7 @@ import com.profteam.dao.UserDAO;
 import com.profteam.helper.AccountSave;
 import com.profteam.helper.DataHelper;
 import com.profteam.helper.SettingSave;
+import com.profteam.helper.SwingHelper;
 import com.profteam.model.Book;
 import com.profteam.model.BookProduct;
 import com.profteam.model.Order;
@@ -16,16 +17,7 @@ import com.profteam.model.OrderDetail;
 import com.profteam.model.User;
 import com.profteam.view.frame.OrderJFrame;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.TableModelEvent;
@@ -48,7 +40,8 @@ public class OrderEditorJDialog extends JDialog {
 	private JTextField txtUsername;
 	private JTableBlue tblBook;
 	private JLabel lblPriceTotal;
-	
+	private JComboBox cboStatus;
+
 	private SelectUserJDialog selectUserJDialog = new SelectUserJDialog();
 	private SelectBookJDialog selectBookJDialog = new SelectBookJDialog();
 	private OrderJFrame orderJFrame;
@@ -214,10 +207,20 @@ public class OrderEditorJDialog extends JDialog {
 		panel.add(btnSelectAccount);
 		panel.add(button);
 		
+		cboStatus = new JComboBox();
+		cboStatus.setBounds(399, 360, 126, 22);
+		cboStatus.setModel(new DefaultComboBoxModel(SwingHelper.StatusOrder.values()));
+		panel.add(cboStatus);
+		
+		JLabel lblTrngThi = new JLabel("Trạng thái:");
+		lblTrngThi.setBounds(340, 363, 53, 14);
+		panel.add(lblTrngThi);
+		
 		JButton btnSave = new JButton("Xác nhận");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				System.out.println(cboStatus.getSelectedItem() + " selected");
 				if (validateAll())
 				{
 					if (isEditMode == false && insertOrder())
@@ -374,7 +377,8 @@ public class OrderEditorJDialog extends JDialog {
 			{
 				txtUsername.setText(userSelect.getFullname());
 			}
-			
+
+			cboStatus.setSelectedItem(SwingHelper.getStatusOrderFromNameStatus(order.getStatus()));
 			fillToTable();
 		} 
 		catch (SQLException e) 
@@ -486,7 +490,8 @@ public class OrderEditorJDialog extends JDialog {
 			
 			order.setAdminId(AccountSave.getAdmin().getId());
 			order.setDateCreated(new Date());
-		
+			order.setStatus(SwingHelper.getNameStatusFromStatusOrder((SwingHelper.StatusOrder) cboStatus.getSelectedItem()));
+
 			status = OrderDAO.insert(order, listBookProduct);
 		} 
 		catch (SQLException e) 
@@ -506,7 +511,8 @@ public class OrderEditorJDialog extends JDialog {
 				this.order.setUserId(userSelect.getId());
 			else
 				this.order.setUserId(0);
-		
+
+			this.order.setStatus(SwingHelper.getNameStatusFromStatusOrder((SwingHelper.StatusOrder) cboStatus.getSelectedItem()));
 			return OrderDAO.update(order, listBookProduct);
 		} 
 		catch (SQLException e) 
@@ -516,5 +522,4 @@ public class OrderEditorJDialog extends JDialog {
 		
 		return false;
 	}
-
 }

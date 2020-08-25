@@ -91,7 +91,6 @@ public class BookJFrame extends JFrame {
     private BookEditorJDialog inserBookJFrame = new BookEditorJDialog();
     private BookEditorJDialog editorBookJDialog = new BookEditorJDialog();
     private BookDetailJDialog bookDetailJDialog = new BookDetailJDialog(this);
-    private JLabel lblTmKim;
     private JTextField txtSearch;
     
     private List<Book> listBook = new ArrayList<Book>();
@@ -250,21 +249,7 @@ public class BookJFrame extends JFrame {
         pnlTime = new JPanel();
         pnlTime.setBackground(SystemColor.menu);
         
-        lblTmKim = new JLabel("Tìm kiếm:");
-        lblTmKim.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        
-        txtSearch = new JTextFieldDark();
-        txtSearch.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyReleased(KeyEvent arg0) {
-                try {
-                    search();
-                }
-                catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        txtSearch = new JTextField();
         txtSearch.setColumns(10);
         
         popupMenu = new JPopupMenu();
@@ -391,48 +376,59 @@ public class BookJFrame extends JFrame {
             }
         });
         btnExportExcel.setIcon(new ImageIcon(BookJFrame.class.getResource("/icon/icons8_microsoft_excel_2019_16px.png")));
+        
+        JButton btnTmKim = new JButton("Tìm kiếm");
+        btnTmKim.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+                try {
+                    onSearch();
+                }
+                catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+        	}
+        });
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
         gl_contentPane.setHorizontalGroup(
-                gl_contentPane.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_contentPane.createSequentialGroup()
-                                .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                                        .addGroup(gl_contentPane.createSequentialGroup()
-                                                .addGap(12)
-                                                .addComponent(lblTmKim, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-                                                .addGap(4)
-                                                .addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
-                                                .addComponent(btnExportExcel))
-                                        .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
-                                .addGap(10)
-                                .addComponent(pnlController, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-                                .addGap(3))
-                        .addGroup(gl_contentPane.createSequentialGroup()
-                                .addComponent(pnlSelect, GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE)
-                                .addGap(10)
-                                .addComponent(pnlTime, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)
-                                .addGap(3))
+        	gl_contentPane.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_contentPane.createSequentialGroup()
+        			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_contentPane.createSequentialGroup()
+        					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+        						.addGroup(gl_contentPane.createSequentialGroup()
+        							.addContainerGap()
+        							.addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(btnTmKim)
+        							.addPreferredGap(ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+        							.addComponent(btnExportExcel))
+        						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE))
+        					.addGap(10)
+        					.addComponent(pnlController, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE))
+        				.addGroup(gl_contentPane.createSequentialGroup()
+        					.addComponent(pnlSelect, GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
+        					.addGap(10)
+        					.addComponent(pnlTime, GroupLayout.PREFERRED_SIZE, 179, GroupLayout.PREFERRED_SIZE)))
+        			.addGap(3))
         );
         gl_contentPane.setVerticalGroup(
-                gl_contentPane.createParallelGroup(Alignment.LEADING)
-                        .addGroup(gl_contentPane.createSequentialGroup()
-                                .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                                        .addGroup(gl_contentPane.createSequentialGroup()
-                                                .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                                                        .addComponent(lblTmKim, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(gl_contentPane.createSequentialGroup()
-                                                                .addGap(1)
-                                                                .addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(btnExportExcel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-                                                .addGap(6)
-                                                .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
-                                                .addGap(6))
-                                        .addGroup(gl_contentPane.createSequentialGroup()
-                                                .addGap(6)
-                                                .addComponent(pnlController, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)))
-                                .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                                        .addComponent(pnlSelect, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pnlTime, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
+        	gl_contentPane.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_contentPane.createSequentialGroup()
+        			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+        				.addGroup(gl_contentPane.createSequentialGroup()
+        					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+        						.addComponent(btnExportExcel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+        						.addComponent(btnTmKim)
+        						.addComponent(txtSearch, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+        					.addGap(6)
+        					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+        					.addGap(6))
+        				.addGroup(gl_contentPane.createSequentialGroup()
+        					.addGap(6)
+        					.addComponent(pnlController, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)))
+        			.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+        				.addComponent(pnlSelect, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(pnlTime, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
         );
         
         JButton btnRefresh = new JButton("Tải lại");
@@ -503,50 +499,15 @@ public class BookJFrame extends JFrame {
     }
     
     //Xóa hết các dòng cũ trên bảng, sau đó duyệt lại list kiểm tra dữ liệu search có tồn tại trong sách nào thì insert sách đó vô bảng
-    public void search() throws SQLException {
+    public void onSearch() throws SQLException {
         String search = txtSearch.getText();
         
         DefaultTableModel model = (DefaultTableModel) tblBook.getModel();
         model.setRowCount(0);
-        
-        for (Book e : listBook) {
-            //Kiem tra dieu kien, neu chuoi search khong nam trong getSearchString thi bo qua tiep tuc lap bang lenh countinue
-            if (DataHelper.search(e.getSearchString(), search) == false) {
-                continue;
-            }
-            
-            String price = DataHelper.getFormatForMoney(e.getPrice()) + SettingSave.getSetting().getMoneySymbol();
-            String categoryTitle = CategoryDAO.getTitleById(e.getCategoryId());
-            String authorFullname = AuthorDAO.findById(e.getAuthorId()).getFullName();
-            
-            String[] rowData =
-                    {
-                            e.getId(),
-                            e.getTitle(),
-                            categoryTitle,
-                            authorFullname,
-                            e.getAmount() + "",
-                            price,
-                            e.getDescription(),
-                    };
-            
-            model.addRow(rowData);
-        }
-        
-        //Nếu điều kiện hợp lý thì set select row lại y như lúc chưa fillToTable
-        int rowCount = tblBook.getRowCount();
-        if (indexSelect != -1) {
-            if (indexSelect < rowCount && rowCount > 0) {
-                tblBook.setRowSelectionInterval(indexSelect, indexSelect);
-            } else {
-                indexSelect = rowCount - 1;
-                if (indexSelect > -1) {
-                    tblBook.setRowSelectionInterval(indexSelect, indexSelect);
-                } else {
-                    setControllModeTo_Nothing();
-                }
-            }
-        }
+
+        listBook = BookDAO.search(txtSearch.getText());
+
+        fillToTable();
     }
     
     public void showBookDetail() {
